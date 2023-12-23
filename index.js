@@ -14,4 +14,9 @@ app.post("/post",(req,res)=>{
     res.cookie("name",req.body.name,{maxAge:3600000,secure:true,sameSite:"none"});
     res.json(`sent cookie ${req.body.name}`);
 })
+app.get("/cookie",(req,res)=>{
+    const name = req.cookies?.name;
+    name ?res.json(name) : res.sendStatus(401);
+}
+
 app.listen(5000,()=>console.log("port created"))
