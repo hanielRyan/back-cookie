@@ -8,6 +8,8 @@ app.use(cors({
 }));
 app.use(parser());
 app.get("/",(req,res)=>{
+    res.set("Access-Control-Allow-Origin","https://front-cookie.vercel.app");
+    res.set("Access-Control-Allow-credentials","true");
     res.cookie("name","anonymous",{secure:true,sameSite:"lax"});
     res.json("sent cookie");
 })
