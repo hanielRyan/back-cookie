@@ -3,15 +3,15 @@ const parser=require("cookie-parser");
 const app=express();
 const cors=require("cors");
 app.use(cors({
-    origin:"http://localhost:3000",
+    origin:"https://front-cookie.vercel.app",
     credentials:true
 }));
 app.use(express.json());
 app.use(parser());
 app.post("/post",(req,res)=>{
-    res.set("Access-Control-Allow-Origin","http://localhost:3000");
+    res.set("Access-Control-Allow-Origin","https://front-cookie.vercel.app");
     res.set("Access-Control-Allow-Credentials","true");
-    res.cookie("name",req.body.name,{httpOnly:true,sameSite:"strict"});
+    res.cookie("name",req.body.name,{secure:true,sameSite:"none"});
     res.json(`sent cookie ${req.body.name}`);
 })
 app.listen(5000,()=>console.log("port created"))
