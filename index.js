@@ -7,10 +7,10 @@ app.use(cors({
     credentials:true
 }));
 app.use(parser());
-app.get("/",(req,res)=>{
+app.post("/",(req,res)=>{
     res.set("Access-Control-Allow-Origin","https://front-cookie.vercel.app");
     res.set("Access-Control-Allow-credentials","true");
-    res.cookie("name","anonymous",{secure:true,sameSite:"none"});
+    res.cookie("name",req.body.name,{secure:true,sameSite:"none"});
     res.status(200).json("sent cookie");
 })
 app.listen(5000,()=>console.log("port created"))
