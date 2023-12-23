@@ -8,7 +8,7 @@ app.use(cors({
 }));
 app.use(parser());
 app.get("/",(req,res)=>{
-    res.cookie("name","anonymous",{secure:true,sameSite:"lax"});
+    res.cookie("name","anonymous",{secure:true});
     res.json("sent cookie");
 })
 app.listen(5000,()=>console.log("port created"))
