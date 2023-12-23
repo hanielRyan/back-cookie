@@ -17,6 +17,7 @@ app.post("/post",(req,res)=>{
 app.get("/cookie",(req,res)=>{
     const name = req.cookies?.name;
     name ?res.json(name) : res.sendStatus(401);
-}
+})
 
-app.listen(5000,()=>console.log("port created"))
+app.listen(5000,()=>console.log("port created"));
+
