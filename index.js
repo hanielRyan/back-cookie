@@ -12,6 +12,7 @@ app.post("/post",(req,res)=>{
     res.set("Access-Control-Allow-Origin","https://front-cookie.vercel.app");
     res.set("Access-Control-Allow-Credentials","true");
     res.cookie("name",req.body.name,{maxAge:3600000,secure:true,sameSite:"none"});
+    res.cookie("another",anonymous,{maxAge:3600000,secure:true,sameSite:"none"});
     res.json(`sent cookie ${req.body.name}`);
 })
 app.get("/cookie",(req,res)=>{
